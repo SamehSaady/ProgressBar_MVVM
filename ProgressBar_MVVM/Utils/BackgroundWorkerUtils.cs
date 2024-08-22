@@ -141,6 +141,15 @@ namespace ProgressBar_MVVM.Utils
         }
 
         /// <summary>
+        /// Checks whether there's a background operation currently working or not.
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsBusy()
+        {
+            return _backgroundWorker.IsBusy;
+        }
+
+        /// <summary>
         /// Sets the progress of the background operation to the specified value and optionally updates the status.
         /// </summary>
         /// <param name="value">The progress value to set.</param>
