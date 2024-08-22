@@ -59,6 +59,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Utils\BackgroundWorkerUtils.cs" />
     <Compile Include="Utils\NotifyPropertyChangedBase.cs" />
     <Compile Include="ViewModels\MainWinVM.cs" />
     <Compile Include="Views\MainWin.xaml.cs">

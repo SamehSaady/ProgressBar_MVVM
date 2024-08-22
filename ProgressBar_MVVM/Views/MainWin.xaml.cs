@@ -26,19 +26,31 @@ namespace ProgressBar_MVVM
         public MainWin()
         {
             InitializeComponent();
-            
+
             MainWinVM mainWinVM = new MainWinVM();
             DataContext = mainWinVM;
+
+            BackgroundWorkerUtils.Initialize(mainWinVM,
+                null,
+                ex => MessageBox.Show(ex.Message));
         }
 
         private void Start_Btn_Click(object sender, RoutedEventArgs e)
         {
-
+            BackgroundWorkerUtils.RunAsync(() =>
+            {
+                for (int i = 1; i <= 100; i++)
+                {
+                    Thread.Sleep(25);
+                    //BackgroundWorkerUtils.IncreaseProgress(1);  // Static [in progress] message.
+                    BackgroundWorkerUtils.IncreaseProgress(1, $"Status: In Progress ({i}%)");  // Dynamic [in progress] message.
+                }
+            });
         }
 
         private void Cancel_Btn_Click(object sender, RoutedEventArgs e)
         {
-
+            BackgroundWorkerUtils.CancelAsync();
         }
     }
 }
