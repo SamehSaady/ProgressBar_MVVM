@@ -187,9 +187,10 @@ namespace ProgressBar_MVVM.Utils
         /// <remarks>
         /// If the progress value exceeds the <b>MaxProgress</b>, the <b>MaxProgress</b> will be used.
         /// </remarks>
-        public static void IncreaseProgress(int increment, string status = null)
+        public static void IncreaseProgress(double increment, string status = null)
         {
-            SetProgress(_mainWinVM.Progress + increment, status);
+            increment = increment < 1 ? 1 : Math.Round(increment, 0);
+            SetProgress(_mainWinVM.Progress + (int)increment, status);
         }
 
     }
